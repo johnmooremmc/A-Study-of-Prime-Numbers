@@ -1,5 +1,15 @@
 Console Program in C++
 
+Included within this folder:
+
+main.cpp
+  the console application
+ 
+images of results running the program through the first million positive integers
+  (sorry about the poorly thoughtout screenshots with literally no titles or ledgends)
+
+
+
 I may revisit this program later on and refine the searching algorithm, 
 as currently the program is searching through all values up to the desired number which is oviously inefficient
 
