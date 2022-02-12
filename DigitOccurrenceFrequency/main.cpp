@@ -1,19 +1,44 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <fstream>
 
-//using namespace std;
+void writefile(int one, int two, int three, int four, int five, int six, int seven, int eight, int nine, int zero, int taskcount)
+{
+    std::fstream outFile;
+    outFile.open("output.txt", std::ios::app);
+    {
+        if (outFile.is_open()) {
+
+            outFile << "Prime Number Digit Frequencies | Depth: " << taskcount << std::endl;
+            outFile << "One: " << one << std::endl;
+            outFile << "Two: " << two << std::endl;
+            outFile << "Three: " << three << std::endl;
+            outFile << "Four: " << four << std::endl;
+            outFile << "Five: " << five << std::endl;
+            outFile << "Six: " << six << std::endl;
+            outFile << "Seven: " << seven << std::endl;
+            outFile << "Eight: " << eight << std::endl;
+            outFile << "Nine: " << nine << std::endl;
+            outFile << "Zero: " << zero << std::endl;
+            outFile << "_____________________________________________" << std::endl;
+
+            outFile.close();
+        }
+    }
+}
+
 
 int main()
 {
-    int num, j, digit;
-    int taskcount;
+    int num = 1;
+    int taskcount, j, digit;
 
     std::cout << "Count Digits up to X prime: ";
     std::cin >> taskcount;
     system("cls");
 
-    std::string placeholder;
+        std::string placeholder;
 
             int one = 0;
             int three = 0;
@@ -26,48 +51,72 @@ int main()
             int five = 0;
             int seven = 0;
 
-    for (num=1; num<=taskcount; num++)
+    do
     {
         int isprime = 1;
-        for (j=2; j<num; j++)
-        {
-            if (num%j == 0)
-                isprime = 0;
-        }
-        if (isprime == 1)
-        {
-            std::cout << "..." << num << "...Prime";
-            placeholder = std::to_string(num);
 
-            for (digit=0; digit<=placeholder.length(); digit++)
+        placeholder = std::to_string(num);
+        char index = placeholder[placeholder.length()-1];
+        std::string guide;
+        guide = "/0";
+        guide.push_back(index);
+
+        if (guide != "/04")
+        {
+            if (guide != "/06")
             {
-                char index = placeholder[digit];
+                if (guide != "/08")
+                {
+                    if(guide != "/00")
+                    {
+                        for (j=2; j<num; j++)
+                        {
+                            if (num%j == 0)
+                                isprime = 0;
+                        }
+                        if (isprime == 1)
+                        {
+                            std::cout << "...[" << num << "]";
+                            placeholder = std::to_string(num);
 
-                if (index == '1')
-                    one++;
-                else if (index == '2')
-                    two++;
-                else if (index == '3')
-                    three++;
-                else if (index == '4')
-                    four++;
-                else if (index == '5')
-                    five++;
-                else if (index == '6')
-                    six++;
-                else if (index == '7')
-                    seven++;
-                else if (index == '8')
-                    eight++;
-                else if (index == '9')
-                    nine++;
-                else if (index == '0')
-                    zero++;
-            }
-        }
-        else
+                            for (digit=0; digit<=placeholder.length(); digit++)
+                            {
+                                char index = placeholder[digit];
+
+                                if (index == '1')
+                                    one++;
+                                else if (index == '2')
+                                    two++;
+                                else if (index == '3')
+                                    three++;
+                                else if (index == '4')
+                                    four++;
+                                else if (index == '5')
+                                    five++;
+                                else if (index == '6')
+                                    six++;
+                                else if (index == '7')
+                                    seven++;
+                                else if (index == '8')
+                                    eight++;
+                                else if (index == '9')
+                                    nine++;
+                                else if (index == '0')
+                                zero++;
+                            }
+                        } else
+                            std::cout << "..." << num;
+                    } else
+                        std::cout << "..." << num;
+                } else
+                    std::cout << "..." << num;
+            } else
+                std::cout << "..." << num;
+        } else
             std::cout << "..." << num;
-    }
+
+    num++;
+    } while (num <= taskcount);
 
     std::cout << std::endl << std::endl;
     std::cout << "*************************************" << std::endl;
@@ -81,6 +130,8 @@ int main()
     std::cout << "...Count [Eight]" << std::setw(10) << ":" << std::setw(10) << eight << std::endl;
     std::cout << "...Count [Nine] " << std::setw(10) << ":" << std::setw(10) << nine << std::endl;
     std::cout << "...Count [Zero] " << std::setw(10) << ":" << std::setw(10) << zero << std::endl;
+
+    writefile(one, two, three, four, five, six, seven, eight, nine, zero, taskcount);
 
     return 0;
 }
